@@ -19,9 +19,9 @@ jobs:
       - name: Take photo of github.com
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-        uses: "martmast60/puppeteer-screenshot-action@1.3.9"
+        uses: "martmast60/puppeteer-screenshot-action@1.3.5"
         with:
-          url: https://github.com/martmast60/puppeteer-screenshot-action
+          url: https://ccp.cloudaccess.net/index.php?rp=/login
           screenshotName: main
       - name: push to branch
         run: |
