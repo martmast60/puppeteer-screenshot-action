@@ -22,6 +22,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Take photo of gt
         uses: "martmast60/puppeteer-screenshot-action@1.0.0"
+        env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           url: https://github.com
           width: 1366
