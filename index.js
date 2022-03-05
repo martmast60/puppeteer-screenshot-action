@@ -48,7 +48,6 @@ function getChromePath() {
 
     const browser = await puppeteer.launch({
       executablePath: getChromePath(),
-      defaultViewport: { width, height },
     });
     const page = await browser.newPage();
     
@@ -60,7 +59,8 @@ function getChromePath() {
     
 //     await page.waitFor(3000);
     
-    
+        page.setViewport({ width: 1366, height: 768 });
+
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36');
     await page.goto("https://ccp.cloudaccess.net/index.php?rp=/login");
     await page.click('#inputEmail');
