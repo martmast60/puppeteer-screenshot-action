@@ -26,7 +26,7 @@ jobs:
     - run: git clone https://github.com/martmast60/puppeteer-screenshot-action
     - run: cd puppeteer-screenshot-action
     - run: npm i puppeteer
-    - run: node run runcron.js
+    - run: node .\runcron.js
                                
     - name: push to branch
       run: |
