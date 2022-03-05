@@ -6,7 +6,7 @@ branding:
   color: 'green'
 runs:
   using: "node12"
-  main: "lib/index.js"
+  main: "index.js"
 inputs:
   url:
     required: true
