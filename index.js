@@ -69,7 +69,7 @@ function getChromePath() {
     await page.keyboard.type('@Anu123456');
     await page.click('#login');
     await page.waitForNavigation();
-    await page.waitForSelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup",{timeout: 50000});
+    await page.waitForSelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup");
 
     await page.evaluate(() => {
         document.querySelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup").click();
