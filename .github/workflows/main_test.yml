@@ -19,5 +19,7 @@ jobs:
     steps:
     - name: Take photo of github.com
       uses: "lannonbr/puppeteer-screenshot-action@1.0.0"
+      env:
+         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       with:
        url: https://github.com
