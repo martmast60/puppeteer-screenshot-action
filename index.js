@@ -51,10 +51,45 @@ function getChromePath() {
       defaultViewport: { width, height },
     });
     const page = await browser.newPage();
-    await page.goto(url, {
-      waitUntil: "networkidle2",
+    
+    
+//     await page.goto(url, {
+//       waitUntil: "networkidle2",
+//     });
+    
+    
+//     await page.waitFor(3000);
+    
+    
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36');
+    await page.goto("https://ccp.cloudaccess.net/index.php?rp=/login");
+    await page.click('#inputEmail');
+    await page.keyboard.type('martmast60@gmail.com');
+    await page.click('#inputPassword');
+    await page.keyboard.type('@Anu123456');
+    await page.click('#login');
+    await page.waitForNavigation();
+    await page.waitForSelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup",{timeout: 50000});
+
+    await page.evaluate(() => {
+        document.querySelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup").click();
+        setTimeout(() => {
+            document.querySelector("#trials-table > tbody > tr > td:nth-child(5) > form > input.btn.btn-warning.js-show-upgrade-popup").click();
+        },1500);
+        
     });
-    await page.waitFor(3000);
+
+
+
+    // await page.click(RENEW_BTN);
+    // await page.click(RENEW_BTN, {delay: 3000});
+    await page.waitForNavigation();
+    
+    
+    
+    
+    
+    
     await page.screenshot({
       fullPage,
       path: `${process.env.GITHUB_WORKSPACE}/screenshots/${screenshotName}.png`,
