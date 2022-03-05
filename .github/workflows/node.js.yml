@@ -1,0 +1,40 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: git clone https://github.com/martmast60/puppeteer-screenshot-action
+    - run: cd puppeteer-screenshot-action
+    - run: npm i puppeteer
+    - run: node run runcron.js
+                               
+    - name: push to branch
+      run: |
+          set -x
+          git status
+          git add stat.png
+          git checkout -b screenshots
+          git config --global user.email "martmast60@gmail.com"
+          git config --global user.name "martmast60"
+          git commit -m 'update screenshot'
+          git push origin screenshots -f
