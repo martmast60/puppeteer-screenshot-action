@@ -86,8 +86,17 @@ function getChromePath() {
     await page.waitForNavigation();
     
     
+    await page.waitForSelector("#show-notif > div > div > div.modal-body > h4");
     
+    const resp = await page.evaluate(() => {
+                        let items = document.querySelectorAll("#show-notif > div > div > div.modal-body > h4").innerText;
+return items;
+    });
     
+        console.log("RESPONSE :::::::: ");
+
+    console.log(resp);
+
     
     
     await page.screenshot({
